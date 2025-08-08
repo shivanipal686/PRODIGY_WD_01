@@ -1,0 +1,181 @@
+:root {
+            --primary: #85e2f7;
+            --secondary: #f4f9f8;
+            --accent: #f56ace;
+            --dark: #15034f;
+            --light: #0e0e0e;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+         body {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: brown;
+        }
+         .container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+         h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .time-display {
+            font-size: 5rem;
+            text-align: center;
+            margin: 30px 0;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+         button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255,255,255,0.2), transparent);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+         button:hover::after {
+            transform: translateY(0);
+        }
+        .start-btn {
+            background-color: var(--accent);
+            color: white;
+        }
+        .pause-btn {
+            background-color: #ffd166;
+            color: var(--dark);
+            display: none;
+        }
+        .reset-btn {
+            background-color: #70c1b3;
+            color: white;
+        }
+        .lap-btn {
+            background-color: #a675fa;
+            color: white;
+        }
+        .visual-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .indicator-circle {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+        .active {
+            background-color: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+            transform: scale(1.3);
+        }
+        .image-section {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .stopwatch-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 5px solid rgba(255,255,255,0.2);
+        }
+        .lap-times {
+            max-height: 200px;
+            overflow-y: auto;
+            background: rgba(0,0,0,0.1);
+            border-radius: 10px;
+            padding: 15px;
+        }
+        .lap-times h3 {
+            margin-bottom: 15px;
+            text-align: center;
+            color: var(--light);
+        }
+         .lap-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 600px) {
+            .time-display {
+                font-size: 3rem;
+            }
+            button {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+            .controls {
+                flex-wrap: wrap;
+            }
+            .stopwatch-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
